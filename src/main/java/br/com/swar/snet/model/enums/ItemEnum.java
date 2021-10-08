@@ -15,7 +15,7 @@ public enum ItemEnum {
 	AGUA("Água", 2),
 	COMIDA("Comida", 1);
 	
-	private String nome;
+	private String descricao;
 	private Integer valor;
 	
 	@JsonCreator

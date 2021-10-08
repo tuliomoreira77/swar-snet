@@ -23,3 +23,6 @@
 hs_err_pid*
 *.gz
 target/classes/META-INF/build-info.properties
+target/*
+
+!application/application.zip

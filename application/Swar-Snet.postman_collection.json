@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "a8e2a09c-ad36-4d71-bb7c-9ee5a523f7f0",
+		"name": "Swar-Snet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar Rebelde",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Marco\",\r\n  \"idade\": 11,\r\n  \"genero\": \"M\",\r\n  \"latitude\": 1.093,\r\n  \"longitude\": 1.093,\r\n  \"nomeLocalizacao\": \"Knowhere\",\r\n  \"inventario\": [\r\n      {\r\n      \"item\": \"COMIDA\",\r\n      \"quantidade\": 3\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{basePath}}/api/v1/rebelde",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rebelde"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscarRebeldes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{basePath}}/api/v1/rebelde",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rebelde"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Rebelde",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{basePath}}/api/v1/rebelde/2",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rebelde",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AtualizarLocalizacao",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"latitude\": 25,\r\n  \"longitude\": 30,\r\n  \"nomeLocalizacao\": \"Titan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{basePath}}/api/v1/rebelde/1/localizacao",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rebelde",
+						"1",
+						"localizacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReportarTraicao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{basePath}}/api/v1/rebelde/1/reportar",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rebelde",
+						"1",
+						"reportar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RealizarNegociacao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"parteA\": {\r\n    \"idRebelde\": 1,\r\n    \"items\": [\r\n      {\r\n        \"item\": \"ARMA\",\r\n        \"quantidade\": 1\r\n      }\r\n    ]\r\n  },\r\n  \"parteB\": {\r\n    \"idRebelde\": 2,\r\n    \"items\": [\r\n      {\r\n        \"item\": \"ARMA\",\r\n        \"quantidade\": 2\r\n      }\r\n    ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{basePath}}/api/v1/negociacao",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"negociacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RebeldeReport",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{basePath}}/api/v1/relatorio/rebeldes",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"relatorio",
+						"rebeldes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ItemReport",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{basePath}}/api/v1/relatorio/items",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"relatorio",
+						"items"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "basePath",
+			"value": "localhost:8080"
+		}
+	]
+}

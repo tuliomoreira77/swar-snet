@@ -21,10 +21,11 @@ public class SwaggerConfig  {
 	
 	private Info apiInfo() {
 		return new Info()
-            .title ("Busca CEP Api")
-            .description ("Essa é uma API de desenvolvida para busca de logradouros e ceps. No momento suporte à busca de ceps e logradouros do estado de Minas Gerais.")
+            .title ("Swar-Net - Stars Wars Resistence Social Network")
+            .description ("O império continua sua luta incessante de dominar a galáxia, tentando ao máximo expandir seu território e eliminar os rebeldes. "
+            		+ "Esse é um sistema para compartilhar recursos entre os rebeldes.")
             .version("1.0.0")
-            .contact(new Contact().email("marcotulio@frwk.com.br").name("Framework - Marco Tulio Moreira"));
+            .contact(new Contact().email("tuliomoreira77@gmail.com").name("Marco Tulio Moreira"));
     }
 	
 }
