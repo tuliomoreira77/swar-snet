@@ -45,11 +45,9 @@ public class RebeldeApiTestController {
 		request.setNomeLocalizacao("Titan");
 		request.setInventario(TestUtils.getInventarioA());
 		
-		RequestAndResponse<RebeldeDto, RebeldeDto> requestResponse = new RequestAndResponse<RebeldeDto, RebeldeDto>(request, request).build();
-		
 		this.mockMvc.perform(post("/api/v1/rebelde")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(requestResponse.getRequest()))
+				.content(JsonParser.toJson(request)))
 			.andDo(print()).andExpect(status().is(201));
 	}
 	
@@ -65,11 +63,9 @@ public class RebeldeApiTestController {
 		request.setNomeLocalizacao("Titan");
 		request.setInventario(TestUtils.getInventarioA());
 		
-		RequestAndResponse<RebeldeDto, RebeldeDto> requestResponse = new RequestAndResponse<RebeldeDto, RebeldeDto>(request, request).build();
-		
 		this.mockMvc.perform(post("/api/v1/rebelde")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(requestResponse.getRequest()))
+				.content(JsonParser.toJson(request)))
 			.andDo(print()).andExpect(status().is(400));
 	}
 	
@@ -85,11 +81,9 @@ public class RebeldeApiTestController {
 		request.setNomeLocalizacao("Titan");
 		request.setInventario(TestUtils.getInventarioB());
 		
-		RequestAndResponse<RebeldeDto, RebeldeDto> adicionarRebelde = new RequestAndResponse<RebeldeDto, RebeldeDto>(request, request).build();
-		
 		this.mockMvc.perform(post("/api/v1/rebelde")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(adicionarRebelde.getRequest()))
+				.content(JsonParser.toJson(request)))
 			.andDo(print()).andExpect(status().is(201));
 		
 		NegociacaoDto negociacaoDto = new NegociacaoDto();
@@ -105,11 +99,9 @@ public class RebeldeApiTestController {
 		negociacaoDto.setParteA(parteA);
 		negociacaoDto.setParteB(parteB);
 		
-		RequestAndResponse<NegociacaoDto, NegociacaoDto> realizarNegociacao = new RequestAndResponse<NegociacaoDto, NegociacaoDto>(negociacaoDto,negociacaoDto).build();
-		
 		this.mockMvc.perform(post("/api/v1/negociacao")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(realizarNegociacao.getRequest()))
+				.content(JsonParser.toJson(negociacaoDto)))
 			.andDo(print()).andExpect(status().is(201));
 		
 		this.mockMvc.perform(get("/api/v1/rebelde/1")
@@ -175,11 +167,10 @@ public class RebeldeApiTestController {
 		negociacaoDto.setParteA(parteA);
 		negociacaoDto.setParteB(parteB);
 		
-		RequestAndResponse<NegociacaoDto, NegociacaoDto> realizarNegociacao = new RequestAndResponse<NegociacaoDto, NegociacaoDto>(negociacaoDto,negociacaoDto).build();
 		
 		this.mockMvc.perform(post("/api/v1/negociacao")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(realizarNegociacao.getRequest()))
+				.content(JsonParser.toJson(negociacaoDto)))
 			.andDo(print()).andExpect(status().is(400)).andExpect(jsonPath("$.rawMessage").value("Negociação Inválida, pelo menos um dos rebeldes é um traidor"));
 	}
 	
