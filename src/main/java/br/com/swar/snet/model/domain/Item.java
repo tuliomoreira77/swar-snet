@@ -19,7 +19,7 @@ public class Item extends BaseEntity {
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "id_rebelde", unique = true, nullable = false)
+	@Column(name = "id_rebelde", nullable = false)
 	private Long idRebelde;
 	
 	@Column(name = "nome", nullable = false)

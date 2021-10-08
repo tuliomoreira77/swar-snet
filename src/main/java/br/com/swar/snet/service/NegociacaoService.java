@@ -43,7 +43,7 @@ public class NegociacaoService {
 		for(var itemDto : itemsParaTransferenciaDto) {
 			List<Item> items = de.getInventario().stream().filter(el -> el.getNome().equals(itemDto.getItem().name())).collect(Collectors.toList());
 			for(int i=0; i < itemDto.getQuantidade(); i++) {
-				var item = items.get(0);
+				var item = items.get(i);
 				item.setIdRebelde(para.getId());
 				itemsTransferidos.add(item);
 			}

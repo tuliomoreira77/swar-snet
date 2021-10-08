@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.swar.snet.model.domain.Rebelde;
 import br.com.swar.snet.model.enums.GeneroEnum;
 import br.com.swar.snet.utils.SwarSnetCollectionUtils;
+import br.com.swar.snet.utils.RebeldeConstants;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RebeldeDto {
 	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	private Long id;
 
 	private String nome;
@@ -31,6 +34,9 @@ public class RebeldeDto {
 	
 	private List<ItemDto> inventario;
 	
+	@JsonIgnore
+	private Integer advertencias;
+	
 	public RebeldeDto(Rebelde rebelde) {
 		this.id = rebelde.getId();
 		this.nome = rebelde.getNome();
@@ -40,11 +46,17 @@ public class RebeldeDto {
 		this.longitude = rebelde.getLocalizacao().getLongitude();
 		this.nomeLocalizacao = rebelde.getLocalizacao().getNome();
 		this.inventario = SwarSnetCollectionUtils.toStackList(rebelde.getInventario().stream().map(ItemDto::new).collect(Collectors.toList()));
+		this.advertencias = rebelde.getAdvertencias();
 	}
 	
 	@JsonIgnore
 	public LocalizacaoDto getLocalizacao() {
 		return new LocalizacaoDto(latitude, longitude, nomeLocalizacao);
+	}
+	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	public boolean isTraidor() {
+		return this.advertencias >= RebeldeConstants.LIMIAR_TRAICAO;
 	}
 	
 }
