@@ -35,7 +35,7 @@ public class RebeldeDto {
 	private List<ItemDto> inventario;
 	
 	@JsonIgnore
-	private Integer advertencias;
+	private Integer advertencias = 0;
 	
 	public RebeldeDto(Rebelde rebelde) {
 		this.id = rebelde.getId();
